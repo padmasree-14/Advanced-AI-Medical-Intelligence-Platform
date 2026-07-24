@@ -61,7 +61,7 @@ export const History = () => {
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="flex items-center space-x-3 text-sky-400">
           <Activity className="w-8 h-8 animate-spin" />
-          <span className="font-semibold text-lg">Loading Prediction Vault...</span>
+          <span className="font-semibold text-lg text-sky-700">Loading Prediction Vault...</span>
         </div>
       </div>
     );
@@ -74,10 +74,10 @@ export const History = () => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 glass-panel p-6 rounded-3xl">
         <div>
           <h1 className="text-2xl font-extrabold text-white flex items-center space-x-2">
-            <HistoryIcon className="w-6 h-6 text-sky-400" />
+            <HistoryIcon className="w-6 h-6 text-sky-600" />
             <span>Diagnostic History Vault</span>
           </h1>
-          <p className="text-xs text-slate-400 mt-1">Archived medical image classification records & Grad-CAM visual maps</p>
+          <p className="text-xs text-slate-500 mt-1">Archived medical image classification records & Grad-CAM visual maps</p>
         </div>
 
         {/* Search & Filter Inputs */}
@@ -89,14 +89,14 @@ export const History = () => {
               placeholder="Search scans..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition"
+              className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500/30 transition"
             />
           </div>
 
           <select
             value={selectedClass}
             onChange={(e) => setSelectedClass(e.target.value)}
-            className="w-full sm:w-auto px-4 py-2 rounded-xl bg-slate-900 border border-slate-700 text-xs font-medium text-white focus:outline-none focus:border-sky-500 transition"
+            className="w-full sm:w-auto px-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-medium text-slate-900 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500/30 transition"
           >
             <option value="ALL">All Finding Classes</option>
             <option value="NORMAL">Normal</option>
@@ -108,7 +108,7 @@ export const History = () => {
       </div>
 
       {error && (
-        <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-sm flex items-center space-x-2">
+        <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-sm flex items-center space-x-2">
           <AlertCircle className="w-5 h-5 shrink-0" />
           <span>{error}</span>
         </div>
@@ -118,7 +118,7 @@ export const History = () => {
       <div className="glass-panel p-6 rounded-3xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="text-slate-400 border-b border-slate-800 uppercase font-semibold">
+            <thead className="text-slate-500 border-b border-slate-200 uppercase font-semibold">
               <tr>
                 <th className="pb-3 px-3">Scan Image</th>
                 <th className="pb-3 px-3">Scan ID</th>
@@ -129,37 +129,37 @@ export const History = () => {
                 <th className="pb-3 px-3 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 text-slate-200">
+            <tbody className="divide-y divide-slate-100 text-slate-700">
               {filteredHistory.length > 0 ? (
                 filteredHistory.map((item) => {
                   const itemId = item.id || item._id;
                   const isNorm = item.predicted_class?.toLowerCase() === 'normal';
                   return (
-                    <tr key={itemId} className="hover:bg-slate-800/40 transition">
+                    <tr key={itemId} className="hover:bg-slate-50 transition">
                       <td className="py-3 px-3">
-                        <img src={item.image_url} alt="Thumbnail" className="w-10 h-10 object-cover rounded-lg border border-slate-700 bg-black" />
+                        <img src={item.image_url} alt="Thumbnail" className="w-10 h-10 object-cover rounded-lg border border-slate-200 bg-slate-100" />
                       </td>
-                      <td className="py-3 px-3 font-mono text-slate-400">{itemId.substring(0, 8)}...</td>
-                      <td className="py-3 px-3 font-mono text-slate-200">{item.image_name}</td>
+                      <td className="py-3 px-3 font-mono text-slate-500">{itemId.substring(0, 8)}...</td>
+                      <td className="py-3 px-3 font-mono text-slate-700">{item.image_name}</td>
                       <td className="py-3 px-3">
                         <span className={`px-2.5 py-1 rounded-full font-bold ${
-                          isNorm ? 'bg-emerald-500/20 text-emerald-400' : 'bg-rose-500/20 text-rose-400'
+                          isNorm ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'
                         }`}>
                           {item.predicted_class}
                         </span>
                       </td>
-                      <td className="py-3 px-3 font-semibold">{item.confidence}%</td>
-                      <td className="py-3 px-3 text-slate-400">{new Date(item.created_at).toLocaleString()}</td>
+                      <td className="py-3 px-3 font-semibold text-slate-800">{item.confidence}%</td>
+                      <td className="py-3 px-3 text-slate-500">{new Date(item.created_at).toLocaleString()}</td>
                       <td className="py-3 px-3 text-right space-x-2">
                         <button
                           onClick={() => navigate(`/prediction/${itemId}`, { state: { prediction: item } })}
-                          className="px-3 py-1.5 rounded-lg bg-sky-500/10 text-sky-400 border border-sky-500/20 hover:bg-sky-500/20 font-semibold"
+                          className="px-3 py-1.5 rounded-lg bg-sky-50 text-sky-700 border border-sky-200 hover:bg-sky-100 font-semibold"
                         >
                           View Heatmap
                         </button>
                         <button
                           onClick={() => handleDelete(itemId)}
-                          className="p-1.5 rounded-lg text-slate-500 hover:text-rose-400 hover:bg-rose-500/10 transition"
+                          className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition"
                           title="Delete scan"
                         >
                           <Trash2 className="w-4 h-4" />

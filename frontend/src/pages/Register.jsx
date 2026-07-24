@@ -38,15 +38,15 @@ export const Register = () => {
     <div className="max-w-lg mx-auto py-12 px-4">
       <div className="glass-panel p-8 rounded-3xl space-y-6 shadow-2xl">
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center mx-auto text-indigo-400">
+          <div className="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-200 flex items-center justify-center mx-auto text-indigo-600">
             <UserPlus className="w-6 h-6" />
           </div>
-          <h2 className="text-2xl font-bold text-white">Create Clinical Account</h2>
-          <p className="text-xs text-slate-400">Register as a radiologist or clinical practitioner</p>
+          <h2 className="text-2xl font-bold text-slate-900">Create Clinical Account</h2>
+          <p className="text-xs text-slate-500">Register as a radiologist or clinical practitioner</p>
         </div>
 
         {error && (
-          <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs flex items-start space-x-2">
+          <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-start space-x-2">
             <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
             <span>{error}</span>
           </div>
@@ -54,9 +54,9 @@ export const Register = () => {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-300">Full Name</label>
+            <label className="text-xs font-semibold text-slate-700">Full Name</label>
             <div className="relative">
-              <User className="w-4 h-4 absolute left-3.5 top-3.5 text-slate-500" />
+              <User className="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400" />
               <input
                 type="text"
                 name="full_name"
@@ -64,7 +64,7 @@ export const Register = () => {
                 value={formData.full_name}
                 onChange={handleChange}
                 placeholder="Dr. Sarah Jenkins, MD"
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-sky-500 transition"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500/30 transition"
               />
             </div>
           </div>
@@ -73,7 +73,7 @@ export const Register = () => {
             <div className="space-y-1.5">
               <label className="text-xs font-semibold text-slate-300">Email Address</label>
               <div className="relative">
-                <Mail className="w-4 h-4 absolute left-3.5 top-3.5 text-slate-500" />
+                <Mail className="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400" />
                 <input
                   type="email"
                   name="email"
@@ -81,7 +81,7 @@ export const Register = () => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="s.jenkins@hospital.org"
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-sky-500 transition"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500/30 transition"
                 />
               </div>
             </div>
@@ -107,7 +107,7 @@ export const Register = () => {
             <div className="space-y-1.5">
               <label className="text-xs font-semibold text-slate-300">Password</label>
               <div className="relative">
-                <Lock className="w-4 h-4 absolute left-3.5 top-3.5 text-slate-500" />
+                <Lock className="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400" />
                 <input
                   type="password"
                   name="password"
@@ -116,7 +116,7 @@ export const Register = () => {
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="••••••••"
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-sky-500 transition"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500/30 transition"
                 />
               </div>
             </div>
@@ -124,12 +124,12 @@ export const Register = () => {
             <div className="space-y-1.5">
               <label className="text-xs font-semibold text-slate-300">Clinical Specialty</label>
               <div className="relative">
-                <Shield className="w-4 h-4 absolute left-3.5 top-3.5 text-slate-500" />
+                <Shield className="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400" />
                 <select
                   name="role"
                   value={formData.role}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-white text-sm focus:outline-none focus:border-sky-500 transition appearance-none"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500/30 transition appearance-none"
                 >
                   <option value="radiologist">Radiologist</option>
                   <option value="physician">Attending Physician</option>
@@ -155,9 +155,9 @@ export const Register = () => {
           </button>
         </form>
 
-        <div className="text-center pt-2 text-xs text-slate-400">
+        <div className="text-center pt-2 text-xs text-slate-500">
           Already registered?{' '}
-          <Link to="/login" className="text-sky-400 font-semibold hover:underline">
+          <Link to="/login" className="text-sky-600 font-semibold hover:underline">
             Sign in here
           </Link>
         </div>

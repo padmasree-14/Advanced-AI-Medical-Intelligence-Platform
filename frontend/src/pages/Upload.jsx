@@ -67,14 +67,14 @@ export const Upload = () => {
     <div className="max-w-3xl mx-auto py-10 px-4 space-y-8">
       
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-extrabold text-white">Upload Medical Radiograph</h1>
-        <p className="text-sm text-slate-400 max-w-xl mx-auto">
+        <h1 className="text-3xl font-extrabold text-slate-900">Upload Medical Radiograph</h1>
+        <p className="text-sm text-slate-500 max-w-xl mx-auto">
           Upload chest radiograph or scan for immediate EfficientNet-B0 classification & Grad-CAM visual heatmap explainability.
         </p>
       </div>
 
       {error && (
-        <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-sm flex items-center space-x-2">
+        <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-sm flex items-center space-x-2">
           <AlertCircle className="w-5 h-5 shrink-0" />
           <span>{error}</span>
         </div>
@@ -84,11 +84,11 @@ export const Upload = () => {
         
         {/* Organ System Selection */}
         <div className="glass-panel p-5 rounded-2xl space-y-2">
-          <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">Target Examination Anatomy</label>
+          <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">Target Examination Anatomy</label>
           <select
             value={organSystem}
             onChange={(e) => setOrganSystem(e.target.value)}
-            className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white font-medium text-sm focus:outline-none focus:border-sky-500 transition"
+            className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-medium text-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500/30 transition"
           >
             <option value="Chest Radiograph">Chest Radiograph (PA/AP View)</option>
             <option value="Pulmonary CT Scan">Pulmonary CT Axial Slice</option>
@@ -101,7 +101,7 @@ export const Upload = () => {
           onDrop={handleDrop}
           onDragOver={handleDragOver}
           className={`glass-panel p-10 rounded-3xl border-2 border-dashed transition-all text-center cursor-pointer ${
-            file ? 'border-sky-500/80 bg-sky-500/5' : 'border-slate-700 hover:border-sky-500/50'
+            file ? 'border-sky-400/80 bg-sky-50/50' : 'border-slate-300 hover:border-sky-400/50'
           }`}
           onClick={() => document.getElementById('file-upload-input').click()}
         >
@@ -123,17 +123,17 @@ export const Upload = () => {
                   <FileCheck className="w-4 h-4" />
                   <span>{file.name}</span>
                 </span>
-                <span className="text-xs text-slate-400 block mt-1">{(file.size / 1024 / 1024).toFixed(2)} MB • Click or drag to replace</span>
+                <span className="text-xs text-slate-500 block mt-1">{(file.size / 1024 / 1024).toFixed(2)} MB • Click or drag to replace</span>
               </div>
             </div>
           ) : (
             <div className="space-y-4 py-6">
-              <div className="w-16 h-16 rounded-2xl bg-sky-500/20 border border-sky-500/30 flex items-center justify-center mx-auto text-sky-400 shadow-lg shadow-sky-500/20">
+              <div className="w-16 h-16 rounded-2xl bg-sky-50 border border-sky-200 flex items-center justify-center mx-auto text-sky-600 shadow-sm">
                 <UploadIcon className="w-8 h-8" />
               </div>
               <div>
-                <p className="text-base font-bold text-white">Drag & drop medical image here</p>
-                <p className="text-xs text-slate-400 mt-1">Supports PNG, JPEG, DICOM exported files up to 10MB</p>
+                <p className="text-base font-bold text-slate-900">Drag & drop medical image here</p>
+                <p className="text-xs text-slate-500 mt-1">Supports PNG, JPEG, DICOM exported files up to 10MB</p>
               </div>
             </div>
           )}

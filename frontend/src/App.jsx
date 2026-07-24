@@ -16,7 +16,7 @@ import { Profile } from './pages/Profile';
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center text-sky-400">Loading Session...</div>;
+    return <div className="min-h-screen flex items-center justify-center text-sky-600">Loading Session...</div>;
   }
   if (!user) {
     return <Navigate to="/login" replace />;
