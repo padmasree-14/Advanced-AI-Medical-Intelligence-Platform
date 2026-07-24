@@ -16,9 +16,9 @@ export default {
           800: '#0c4a6e',
           900: '#0f172a'
         },
-        darkbg: '#0b1120',
-        glasscard: 'rgba(15, 23, 42, 0.75)',
-        borderglass: 'rgba(255, 255, 255, 0.1)'
+        darkbg: '#f8fafc',
+        glasscard: 'rgba(255, 255, 255, 0.88)',
+        borderglass: 'rgba(226, 232, 240, 0.9)'
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
