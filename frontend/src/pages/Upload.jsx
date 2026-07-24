@@ -50,9 +50,7 @@ export const Upload = () => {
     formData.append('organ_system', organSystem);
 
     try {
-      const res = await api.post('/predict', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
-      });
+      const res = await api.post('/predict', formData);
       if (res.data.success) {
         navigate(`/prediction/${res.data.data.id}`, { state: { prediction: res.data.data } });
       }
