@@ -8,6 +8,15 @@ export const ReportModal = ({ report, onClose }) => {
     window.print();
   };
 
+  const renderSafeList = (items) => {
+    if (!items) return <li>None specified</li>;
+    if (Array.isArray(items)) {
+      return items.map((item, idx) => <li key={idx}>{item}</li>);
+    }
+    // If LLM returned a string instead of an array, safely render it
+    return <li>{String(items)}</li>;
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
       <div className="relative w-full max-w-4xl glass-panel bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden my-8">
@@ -72,9 +81,7 @@ export const ReportModal = ({ report, onClose }) => {
                 <span>Possible Causes</span>
               </h4>
               <ul className="space-y-1 text-xs text-slate-700 list-disc list-inside">
-                {report.possible_causes?.map((item, idx) => (
-                  <li key={idx}>{item}</li>
-                ))}
+                {renderSafeList(report.possible_causes)}
               </ul>
             </div>
 
@@ -84,9 +91,7 @@ export const ReportModal = ({ report, onClose }) => {
                 <span>Risk Factors</span>
               </h4>
               <ul className="space-y-1 text-xs text-slate-700 list-disc list-inside">
-                {report.risk_factors?.map((item, idx) => (
-                  <li key={idx}>{item}</li>
-                ))}
+                {renderSafeList(report.risk_factors)}
               </ul>
             </div>
           </div>
@@ -99,18 +104,14 @@ export const ReportModal = ({ report, onClose }) => {
                 <span>Clinical Precautions</span>
               </h4>
               <ul className="space-y-1 text-xs text-slate-700 list-disc list-inside">
-                {report.precautions?.map((item, idx) => (
-                  <li key={idx}>{item}</li>
-                ))}
+                {renderSafeList(report.precautions)}
               </ul>
             </div>
 
             <div className="p-4 rounded-xl bg-sky-50/60 border border-sky-200 space-y-2">
               <h4 className="text-xs font-bold text-sky-700 uppercase tracking-wider">Lifestyle Recommendations</h4>
               <ul className="space-y-1 text-xs text-slate-700 list-disc list-inside">
-                {report.lifestyle_advice?.map((item, idx) => (
-                  <li key={idx}>{item}</li>
-                ))}
+                {renderSafeList(report.lifestyle_advice)}
               </ul>
             </div>
           </div>

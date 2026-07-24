@@ -52,7 +52,7 @@ export const Upload = () => {
     try {
       const res = await api.post('/predict', formData);
       if (res.data.success) {
-        navigate(`/prediction/${res.data.data.id}`, { state: { prediction: res.data.data } });
+        navigate(`/prediction/${res.data.data.id}`);
       }
     } catch (err) {
       setError(err.response?.data?.detail || 'Image processing failed. Please try again.');
